@@ -128,7 +128,7 @@ $('.slider1 .owl-carousel').owlCarousel({
 
 /* mail function */
 
-
+  });
 
 // window height js
 
