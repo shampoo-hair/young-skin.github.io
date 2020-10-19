@@ -140,15 +140,13 @@ $("#submit").click(function(){
           
           if (fname != "" && phone != "" && email != "" && message != "") {
             if(fname.match(letters)) { 
-              if(phone.match(number) && phone.length == 10) {
-                if(email.match(mail_letters)){
+              if(phone.match(number) && phone.length > 7) {
+             
                   $.ajax({
                   method : 'post',
                   url : 'js/ajax.php',
                   data :  {'first_name' : fname ,
                         'phone_number' : phone,
-                        'email' : email,
-                        'message' : message,
                         },
                    }).done(function(resp){
                      if( resp == 1){
@@ -163,10 +161,7 @@ $("#submit").click(function(){
                         document.getElementById("error").innerHTML = "Mail not Send";
                      }
                    console.log(resp);});
-                }else{
-                  document.getElementById("error").style.color = "red";
-                  document.getElementById("error").innerHTML = "Please Fill The  Correct Mail Id";
-                }
+                
               }else{
                 document.getElementById("error").style.color = "red";
                 document.getElementById("error").innerHTML = "Please Fill The  Correct Number";
