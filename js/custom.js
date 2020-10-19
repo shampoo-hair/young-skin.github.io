@@ -128,54 +128,7 @@ $('.slider1 .owl-carousel').owlCarousel({
 
 /* mail function */
 
-$("#submit").click(function(){
-          var fname = $('#first_name').val();
-          var phone = $('#phone').val();
-          var email = $('#email').val();
-          var message = $('#additionnal_message').val();
-          var letters = /^[A-Za-z]+$/;
-          var number = /^[0-9]+$/;
-          var mail_letters = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-          
-          if (fname != "" && phone != "" && email != "" && message != "") {
-            if(fname.match(letters)) { 
-              if(phone.match(number) && phone.length > 7) {
-             
-                  $.ajax({
-                  method : 'post',
-                  url : 'js/ajax.php',
-                  data :  {'first_name' : fname ,
-                        'phone_number' : phone,
-                        },
-                   }).done(function(resp){
-                     if( resp == 1){
-                      document.getElementById("error").style.color = "green";
-                       document.getElementById("error").innerHTML = "Mail Send Successfully";
-                      $('#first_name').val('');
-                       $('#phone').val('');
-                       $('#email').val('');
-                       $('#additionnal_message').val('');
-                     }else{
-                      document.getElementById("error").style.color = "red";
-                        document.getElementById("error").innerHTML = "Mail not Send";
-                     }
-                   console.log(resp);});
-                
-              }else{
-                document.getElementById("error").style.color = "red";
-                document.getElementById("error").innerHTML = "Please Fill The  Correct Number";
-              }
-            }else
-            { document.getElementById("error").style.color = "red";
-              document.getElementById("error").innerHTML = "Please Fill The Correct Name";
-            }   
-          }else{
-            document.getElementById("error").style.color = "red";
-            document.getElementById("error").innerHTML = "Please Fill All Detail";
-          }
-        });
-  });
 
 // window height js
 
